@@ -29,7 +29,7 @@ vector<int> mergeArrays(vector<int> &a, int m, vector<int> &b, int n){
         j--;
         k--;
     }
-    // if the second array isn't fully traversed
+    // if the first array isn't fully traversed
     while(i>=0){
         nArr[k]=a[i];
         i--;
