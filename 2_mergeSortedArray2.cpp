@@ -11,7 +11,7 @@ int firstOccurence(vector<int>& arr, int key){
     // -1 means value not found
     int ans = -1;
     int l=0;
-    int r=0;
+    int r=arr.size()-1;
     int mid=l+(r-l)/2;
     while(l<=r){
         // we have got the index of the key, now we will check if it is also present in the left half
@@ -38,7 +38,7 @@ int lastOccurence(vector<int>& arr, int key){
     // -1 means value not found
     int ans = -1;
     int l=0;
-    int r=0;
+    int r=arr.size()-1;
     int mid=l+(r-l)/2;
     while(l<=r){
         // we have got the index of the key, now we will check if it is also present in the right half
@@ -67,8 +67,18 @@ int main(){
     // given the sorted array
     vector<int> sortedArr{1, 2, 2, 3, 3, 3, 4, 4, 5, 5, 5, 6, 6, 7, 7, 8, 8, 8, 8, 9, 9};
     // Taking input of key to be searched for
+    cout<<"Enter the value to be searched for: ";
     int key;cin>>key;
+    cout<<endl;
     int firstOcc = firstOccurence(sortedArr, key);
     int lastOcc = lastOccurence(sortedArr, key);
+    // printing the first and last occurence of the value
+    if(firstOcc==-1){
+        cout<<key<<" not found in the array"<<endl;
+    }
+    else{
+        cout<<"First index of "<<key<<" is: "<<firstOcc<<endl;
+        cout<<"Last index of "<<key<<" is: "<<lastOcc<<endl;
+    }
     return 0;
 }
