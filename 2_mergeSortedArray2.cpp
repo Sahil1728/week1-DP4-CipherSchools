@@ -6,6 +6,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 
+// Checking for the first Occurence of the value
 int firstOccurence(vector<int>& arr, int key){
     // -1 means value not found
     int ans = -1;
@@ -32,6 +33,35 @@ int firstOccurence(vector<int>& arr, int key){
     return ans;
 }
 
+// Checking for the last Occurence of the value
+int lastOccurence(vector<int>& arr, int key){
+    // -1 means value not found
+    int ans = -1;
+    int l=0;
+    int r=0;
+    int mid=l+(r-l)/2;
+    while(l<=r){
+        // we have got the index of the key, now we will check if it is also present in the right half
+        if(arr[mid]==key){
+            ans=mid;
+            l=mid+1;
+        }
+        // if value at mid is greater we will check left side
+        else if(arr[mid]>key){
+            r=mid-1;
+        }
+        // otherwise we will check right side of mid
+        else{
+            l=mid+1;
+        }
+        // updating mid value
+        mid = l+(r-l)/2;
+    }
+    return ans;
+}
+
+
+
 
 int main(){
     // given the sorted array
@@ -39,5 +69,6 @@ int main(){
     // Taking input of key to be searched for
     int key;cin>>key;
     int firstOcc = firstOccurence(sortedArr, key);
+    int lastOcc = lastOccurence(sortedArr, key);
     return 0;
 }
