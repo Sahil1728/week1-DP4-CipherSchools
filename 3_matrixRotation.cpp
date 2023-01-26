@@ -18,11 +18,26 @@ void transpose(vector<vector<int>>& mat){
     }
 }
 
+// Rotating the matrix by (size of matrix)/2 times to get the resultant i.e., clockwise 90 degree rotation
+void rotateMat(vector<vector<int>>& mat){
+    // n-> size of matrix
+    int n=mat.size();
+    // loop for row
+    for(int i=0;i<n;i++){
+        // loop for column
+        for(int j=0;j<n/2;j++){
+            int temp = mat[i][j];
+            mat[i][j]=mat[i][n-j-1];
+            mat[i][n-j-1]=temp;
+        }
+    }
+}
+
 
 
 int main(){
     // Since we have to rotate a n*n matrix we will take n as input
-    cout<<"Enter the size of the square matrix ";
+    cout<<"Enter the size of the square matrix: ";
     int n;cin>>n;
     // the matrix
     vector<vector<int>> matrix;
@@ -38,9 +53,23 @@ int main(){
         matrix.push_back(row);
         cout<<endl;
     }
+
+    // printing the original matrix
+    cout<<"Original matrix:"<<endl;
+    for(auto x:matrix){
+        for(auto y:x){
+            cout<<y<<" ";
+        }
+        cout<<endl;
+    }
+
     // taking transpose of matrix
     transpose(matrix);
+    
+    // rotating the transposed matrix to get the result
+    rotateMat(matrix);
     // printing the matrix
+    cout<<"Final matrix rotated by 90 degree clockwise:"<<endl;
     for(auto x:matrix){
         for(auto y:x){
             cout<<y<<" ";
