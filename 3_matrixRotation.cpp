@@ -6,6 +6,20 @@
 #include<bits/stdc++.h>
 using namespace std;
 
+// taking transpose of matrix
+void transpose(vector<vector<int>>& mat){
+    int sz = mat.size();
+    for(int i=0;i<sz;i++){
+        for(int j=0;j<i;j++){
+            int temp = mat[i][j];
+            mat[i][j]=mat[j][i];
+            mat[j][i]=temp;
+        }
+    }
+}
+
+
+
 int main(){
     // Since we have to rotate a n*n matrix we will take n as input
     cout<<"Enter the size of the square matrix ";
@@ -24,6 +38,8 @@ int main(){
         matrix.push_back(row);
         cout<<endl;
     }
+    // taking transpose of matrix
+    transpose(matrix);
     // printing the matrix
     for(auto x:matrix){
         for(auto y:x){
