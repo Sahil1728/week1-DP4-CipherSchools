@@ -8,6 +8,31 @@
 #include<bits/stdc++.h>
 using namespace std;
 
+vector<int> spiralOrder(vector<vector<int>> &matrix){
+    vector<int> order;
+    int sRow=0, eRow=matrix.size()-1;
+    int sCol=0, eCol=matrix[0].size()-1;
+    while(sRow<=eRow && sCol<=eCol){
+        for(int i=sCol;i<=eCol;i++){
+            order.push_back(matrix[sRow][i]);
+        }
+        sRow++;
+        for(int i=sRow;i<=eRow;i++){
+            order.push_back(matrix[i][eCol]);
+        }
+        eCol--;
+        if(sCol>eCol||sRow>eRow)break;
+        for(int i=eCol;i>=sCol;i--){
+            order.push_back(matrix[eRow][i]);
+        }
+        eRow--;
+        for(int i=eRow;i>=sRow;i--){
+            order.push_back(matrix[i][sCol]);
+        }
+        sCol++;
+    }
+    return order;
+}
 
 int main(){
     cout<<"Enter size of n*n matrix: ";
@@ -31,6 +56,13 @@ int main(){
             cout<<y<<" ";
         }
         cout<<endl;
+    }
+    // spiral order to a vector
+    vector<int> order=spiralOrder(matrix);
+    // printing the vector
+    cout<<endl<<"Matrix elements printed in spiral order: "<<endl;
+    for(auto x:order){
+        cout<<x<<" ";
     }
     return 0;
 }
