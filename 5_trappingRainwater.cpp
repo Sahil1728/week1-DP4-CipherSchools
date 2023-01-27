@@ -7,6 +7,21 @@
 using namespace std;
 
 
+int rainWater(vector<int> &ht){
+    int n = ht.size();
+    vector<int> lMax(n), rMax(n);
+    // Calculating lMax
+    lMax[0]=ht[0];
+    for(int i=1;i<n;i++){
+        lMax[i]=max(lMax[i-1],ht[i]);
+    }
+    // Calculating rMax
+    rMax[n-1]=ht[n-1];
+    for(int i=n-2;i>=0;i--){
+        rMax[i]=max(lMax[i+1],ht[i]);
+    }
+}
+
 
 int main(){
     cout<<"Enter the total number of blocks: ";
